@@ -9,20 +9,18 @@ import TodoList from './components/TodoList';
 
 function App() {
   const [data,setData] =useState([])
+  const [editTask,setEditTask]=useState("")
   const [username,setUsername]=useState("")
   const [inputTask,setInputTask]=useState("")
-
-  useEffect(()=>{
-    const fetchData= async ()=>{
+ const fetchData= async ()=>{
       const res =await axios.get("https://632235effd698dfa2908fb5d.mockapi.io/todos/todo")
       
       setData(res.data)
       console.log(res.data)
     }
-    fetchData();
-
-
-      },[])
+  useEffect(()=>{
+   
+    fetchData();},[])
 
 
   useEffect(()=>{
@@ -32,8 +30,8 @@ function App() {
   return (
     <div className="App">
     <Login username={username} setUsername={setUsername}/>
-    <AddTask  inputTask={inputTask} setInputTask={setInputTask}/>
-    <TodoList data={data}  setData={setData} inputTask={inputTask} setInputTask={setInputTask} />
+    <AddTask  inputTask={inputTask} setInputTask={setInputTask} data={data} setData={setData} fetchData={fetchData} editTask={editTask} setEditTask={setEditTask}  />
+    <TodoList data={data}  setData={setData} inputTask={inputTask} setInputTask={setInputTask} fetchData={fetchData} editTask={editTask} setEditTask={setEditTask} />
 
     </div>
   );

@@ -1,7 +1,56 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect } from 'react'
 
-const AddTask = ({inputTask,setInputTask}) => {
-  return (
+const AddTask = ({inputTask,setInputTask,data,setData,fetchData, setEditTask,editTask})  => {
+useEffect(()=>{
+  if(editTask){
+    setInputTask(editTask.todo)
+  }else{
+    setInputTask("")
+  }
+},[setInputTask,editTask])
+const handleClick = async (e)=>{
+  e.preventDefault();
+  if(!editTask){
+    await axios.post("https://632235effd698dfa2908fb5d.mockapi.io/todos/todo",{
+   todo:inputTask}).then((res) => setData((data)=> [...data,res])).catch((err)=>console.log(err))
+   console.log(data)
+  fetchData()
+}
+else{
+  data.map((item)=>{
+    if(item.id === editTask.id){
+       axios.put(`https://632235effd698dfa2908fb5d.mockapi.io/todos/todo/${editTask.id}`,
+    {todo:inputTask}).then((res)=>setData((data)=>[...data,res]))
+    }else{
+      return item
+    }
+    fetchData()
+    setEditTask("")
+   
+  })
+}
+fetchData()
+}
+
+
+//   const handleClick= async (e)=>{
+// e.preventDefault()
+//  await axios.post("https://632235effd698dfa2908fb5d.mockapi.io/todos/todo",{
+//    todo:inputTask}).then((res) => setData((data)=> [...data,res])).catch((err)=>console.log(err))
+//    console.log(data)
+
+// // setData((data)=> [...data,res])
+
+//   //.then(res) => setData((data)=>[...data] , todo)
+//   fetchData()
+// }
+
+
+    return (
+
+
+
     <div>
   <form>
 <input
@@ -9,10 +58,10 @@ type="text"
 placeholder="Enter a Todo ..."
 className='addTask'
 onChange={(e)=>setInputTask(e.target.value)}
-
+value={inputTask}
 
 />
-<button type="submit" className='task-btn'> ADD </button>
+<button  type='submit' className='task-btn' onClick={handleClick}> {editTask ? "OK" : "ADD"} </button>
 
   </form>
 
