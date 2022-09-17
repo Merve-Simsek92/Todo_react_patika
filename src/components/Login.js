@@ -8,11 +8,12 @@ const Login = ({username,setUsername}) => {
  }   
 const [inputname,setInputname]=useState("")
   return (
-    <div>
+    <div className='login-div'>
      <input type="text" className="form-control"  placeholder="username" onChange={(e)=>setInputname(e.target.value)}   />
-     <button type="submit" className='btn bg-warning m-2 mb-5'  onClick={()=>handleLogin()}>OK</button>
+     <button type="submit" className='btn bg-warning m-2 mb-5'  onClick={()=>handleLogin()}>Login</button>
     
     </div>
+    
   )
 }
 
