@@ -19,6 +19,9 @@ form{
   margin-bottom: 30px;
  
 }
+.navbar-brand{
+  color:rgb(194, 91, 23)
+}
 .icon-btn{
 border-style: none;
 }
@@ -30,7 +33,8 @@ width:35%;
 .login-btn{
   border-style: none;
   border-radius: 10rem;
-  background-color: royalblue
+  background-color: rgb(58, 179, 162);
+  color:aqua
 ;
   
 }

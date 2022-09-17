@@ -13,7 +13,7 @@ const handleClick=()=>{
     <a className="navbar-brand" href="#">
     To Do App
     </a>
-    <div> <a className="navbar-brand">Welcome {username.toUpperCase()}</a>
+    <div> <a className="navbar-brand">{username.toUpperCase()}</a>
     <button className="login-btn" onClick={()=>handleClick()}>Logout</button></div>
    
   </div>
