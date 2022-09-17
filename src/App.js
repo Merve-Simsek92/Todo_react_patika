@@ -5,6 +5,8 @@ import axios from 'axios';
 import Login from './components/Login';
 import AddTask from './components/AddTask';
 import TodoList from './components/TodoList';
+import Navbar from './components/Navbar';
+import "./css/style.css"
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar username={username} setUsername={setUsername} />
     <Login username={username} setUsername={setUsername}/>
     <AddTask  inputTask={inputTask} setInputTask={setInputTask} data={data} setData={setData} fetchData={fetchData} editTask={editTask} setEditTask={setEditTask}  />
     <TodoList data={data}  setData={setData} inputTask={inputTask} setInputTask={setInputTask} fetchData={fetchData} editTask={editTask} setEditTask={setEditTask} />

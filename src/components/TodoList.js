@@ -24,8 +24,8 @@ const TodoList = ({
   const handleEdit = async ({ id }) => {
     const editTodo = data.find((item) => item.id === id);
     setEditTask(editTodo);
-    setInputTask(editTodo.todo)
-    fetchData()
+    setInputTask(editTodo.todo);
+    fetchData();
   };
 
   return (
@@ -33,16 +33,15 @@ const TodoList = ({
       {data.map((item, id) => (
         <div key={id}>
           <h3>
-           <input 
-           onChange={(e)=>e.preventDefault()}
-           value={item.todo}/>
-           <div><button onClick={() => handleDelete(item)}>
-              <FaTrashAlt style={{ color: "red", cursor: "pointer" }} />
-            </button>
-            <button onClick={() => handleEdit(item)}>
-              <FaRegEdit />
-            </button></div>
-            
+            <div>
+              <input onChange={(e) => e.preventDefault()} value={item.todo} className="input-task" />
+              <button className="icon-btn" onClick={() => handleDelete(item)}>
+                <FaTrashAlt style={{ color: "red", cursor: "pointer" }} />
+              </button>
+              <button className="icon-btn"  onClick={() => handleEdit(item)}>
+                <FaRegEdit />
+              </button>
+            </div>
           </h3>
         </div>
       ))}

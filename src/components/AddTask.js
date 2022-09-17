@@ -12,10 +12,12 @@ useEffect(()=>{
 const handleClick = async (e)=>{
   e.preventDefault();
   if(!editTask){
+    if(inputTask.length>=3){
     await axios.post("https://632235effd698dfa2908fb5d.mockapi.io/todos/todo",{
    todo:inputTask}).then((res) => setData((data)=> [...data,res])).catch((err)=>console.log(err))
    console.log(data)
   fetchData()
+  setInputTask("")
 }
 else{
   data.map((item)=>{
@@ -31,6 +33,7 @@ else{
   })
 }
 fetchData()
+  }
 }
 
 
@@ -56,12 +59,12 @@ fetchData()
 <input
 type="text"
 placeholder="Enter a Todo ..."
-className='addTask'
+className='addTask form-control d-inline'
 onChange={(e)=>setInputTask(e.target.value)}
 value={inputTask}
 
 />
-<button  type='submit' className='task-btn' onClick={handleClick}> {editTask ? "OK" : "ADD"} </button>
+<button  type='submit' className='task-btn btn bg-danger m-0.5' onClick={handleClick}> {editTask ? "OK" : "ADD"} </button>
 
   </form>
 

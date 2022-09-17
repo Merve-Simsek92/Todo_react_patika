@@ -1,0 +1,35 @@
+.form-control{
+  width: 30%;
+  height: 20%;  
+  margin:auto;
+  margin-top:20px;
+
+
+}
+.task-btn{
+  width:10%;
+  height:8vh;
+}
+body{
+  background-color:darksalmon;
+  width: 100%;
+
+}
+form{
+  margin-bottom: 30px;
+ 
+}
+.icon-btn{
+border-style: none;
+}
+.input-task{
+border-style: none;
+width:35%;
+
+}
+.addTask{
+
+  width: 40%;
+  height: 8vh;
+}
+
